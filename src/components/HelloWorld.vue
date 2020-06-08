@@ -9,10 +9,34 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    post_id: { type: Number, default: 0 },
-    title: { type: String, default: "" },
-    contents: { type: String, default: "" },
+  data() {
+    return {
+      post_id: 0,
+      title: "",
+      contents: "",
+    };
+  },
+  computed: {
+    q_post_id() {
+      const { query = {} } = this.$route || {};
+      return query.post_id || 1;
+    },
+  },
+  async created() {
+    try {
+      const { data } = await this.$service.post.getPost({
+        post_id: this.q_post_id,
+      });
+      const { getPost } = data.data;
+      const { title, contents, post_id } = getPost;
+      this.title = title;
+      this.contents = contents;
+      this.post_id = post_id;
+    } catch (e) {
+      this.title = "404";
+      this.contents = "해당 페이지가 없습니다.";
+      this.post_id = null;
+    }
   },
 };
 </script>

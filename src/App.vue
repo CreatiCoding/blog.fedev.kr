@@ -1,31 +1,14 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld :post_id="post_id" :title="title" :contents="contents" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
-  components: {
-    HelloWorld: () => import("./components/HelloWorld"),
-  },
-  data() {
-    return {
-      post_id: 0,
-      title: "",
-      contents: "",
-    };
-  },
-  async created() {
-    const { data } = await this.$service.post.getPost({ post_id: 1 });
-    const { getPost } = data.data;
-    const { title, contents, post_id } = getPost;
-    this.title = title;
-    this.contents = contents;
-    this.post_id = post_id;
-  },
+  computed: {},
 };
 </script>
 
