@@ -7,15 +7,12 @@ class Service {
     this.post = post;
   }
   async get(url, query) {
-    return await axios.get(url, { params: query });
+    return await axios.get(`http://creaticoding.iptime.org:4000${url}`, {
+      params: query,
+    });
   }
   async post(url, body) {
-    return await axios.post(url, body);
-  }
-  async getGraphQL(query) {
-    const url =
-      "https://us-central1-fedev-backend.cloudfunctions.net/api/graphql";
-    return await this.get(url, { query });
+    return await axios.post(`http://creaticoding.iptime.org:4000${url}`, body);
   }
 }
 export default {
