@@ -31,15 +31,6 @@ export default {
       this.title = title;
       this.contents = contents;
       this.post_id = post_id;
-      await this.$nextTick();
-      document.querySelector(".hello").append(
-        (() => {
-          var d = document.createElement("div");
-          d.setAttribute("id", "load-complete");
-          d.setAttribute("style", "display: none;");
-          return d;
-        })()
-      );
     } catch (e) {
       this.title = "404";
       this.contents = "해당 페이지가 없습니다.";
