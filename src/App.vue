@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <router-view></router-view>
+    <router-view class="d-b main-header" name="MainHeader"></router-view>
+    <router-view class="d-b main-container"></router-view>
+    <router-view class="d-b main-footer" name="MainFooter"></router-view>
   </div>
 </template>
 
@@ -12,13 +13,15 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import "./style/common.scss";
+@import "normalize-css";
+</style>
+<style lang="scss" scoped>
+.main-header {
+  height: 62px;
+}
+.main-container {
+  min-height: calc(100vh - 100px);
 }
 </style>
