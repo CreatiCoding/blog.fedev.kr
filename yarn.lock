@@ -7553,6 +7553,11 @@ stable@^0.1.8:
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
   integrity sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==
 
+stackedit-js@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/stackedit-js/-/stackedit-js-1.0.7.tgz#2ee22dd3aa78140fbb81926f01a4308e8e967bf0"
+  integrity sha512-FG2MNncXlSEscwBa3Ih6Xl1zrbeJ8/vgbrbzwwLvkdgFIMCRZQzpFpqxSW2o/1AvxguhXrt2dml/Z/I1m5eoLg==
+
 stackframe@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.2.0.tgz#52429492d63c62eb989804c11552e3d22e779303"
