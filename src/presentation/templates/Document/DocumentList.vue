@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: "PostListTemplate",
+  name: "DocumentListTemplate",
   components: {},
   data() {
     return {};

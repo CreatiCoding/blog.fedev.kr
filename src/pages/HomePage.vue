@@ -2,13 +2,11 @@
   <div>
     <MarginAtom top="50px" />
     <div class="main-container">
-      <ButtonAtom :click="() => $router.push('/post/list')">
+      <ButtonAtom :click="() => $router.push('/document/list')">
         <h1
           @mouseenter="(event) => (event.target.style.color = '#50aafb')"
           @mouseleave="(event) => (event.target.style.color = 'unset')"
-        >
-          Post 게시글
-        </h1>
+        >Document 게시글</h1>
       </ButtonAtom>
     </div>
   </div>
@@ -18,13 +16,13 @@ export default {
   name: "HomePage",
   components: {
     MarginAtom: () => import("../presentation/atoms/MarginAtom"),
-    ButtonAtom: () => import("../presentation/atoms/ButtonAtom"),
+    ButtonAtom: () => import("../presentation/atoms/ButtonAtom")
   },
   data() {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>

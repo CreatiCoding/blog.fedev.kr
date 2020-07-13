@@ -1,30 +1,29 @@
 <template>
-  <div class="post-detail-page">
+  <div class="document-detail-page">
     <MarginAtom top="50px" />
     <div>
       <h1>{{ title }}</h1>
     </div>
     <div>
-      <div>
-        {{ contents }}
-      </div>
+      <div v-html="contents" />
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "PostDetailPage",
+  name: "DocumentDetailPage",
   components: {
-    MarginAtom: () => import("../presentation/atoms/MarginAtom"),
+    MarginAtom: () => import("../presentation/atoms/MarginAtom")
   },
   data() {
     const state = {
       title: "",
       contents: "",
-      created: "",
+      html: "",
+      created: ""
     };
     return {
-      state,
+      state
     };
   },
   computed: {
@@ -35,25 +34,28 @@ export default {
         get() { return this.state[k]; },
         set(v) { this.state[k] = v; },
       },
-    }),{}))([ 'title', 'contents', 'created_at' ]),
-    post_id() {
+    }),{}))([ 'title', 'contents', 'created_at', 'html' ]),
+    document_id() {
       const { params } = this.$route;
       return params.id || 0;
-    },
+    }
   },
   async created() {
-    const { data } = await this.$service.Post.getPost({
-      post_id: this.post_id,
+    const { data } = await this.$service.Document.getDocumentDetail({
+      document_id: this.document_id,
+      category: "tech"
     });
-    const { title, contents } = data.data;
-    this.title = title;
-    this.contents = contents;
+    const { document } = data.data;
+    this.title = document.title;
+
+    const converter = new this.$showdown.Converter();
+    this.contents = converter.makeHtml(document.contents);
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
-.post-detail-page {
+.document-detail-page {
   // background: salmon;
   width: 1024px;
   margin: 0 auto;
