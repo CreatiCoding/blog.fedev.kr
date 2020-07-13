@@ -28,8 +28,10 @@ class Service {
     return await this.instance.post(url, body);
   }
   async requestSuccessHandler(config) {
-    // const token = this.Vue.prototype.$cookies.User.get("token");
-    var token = "";
+    const cookie = document.cookie.match(
+      new RegExp(`\\b(^|;)\\s*${"user/token"}\\s*=\\s*([^;]+)\\b`)
+    );
+    const token = (cookie && cookie.pop()) || null;
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
