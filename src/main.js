@@ -6,6 +6,8 @@ import VueLazyLoad from "vue-lazyload";
 import StackeditPlugin from "./plugins/stackedit";
 import StoragePlugin from "./plugins/storage";
 import ModalPlugin from "./plugins/modal";
+import showdown from "showdown";
+import Cookie from "./plugins/cookie";
 
 Vue.config.productionTip = false;
 
@@ -15,6 +17,13 @@ Vue.use(VueLazyLoad);
 Vue.use(StackeditPlugin);
 Vue.use(StoragePlugin);
 Vue.use(ModalPlugin);
+Vue.use(Cookie);
+
+Vue.use({
+  install(Vue) {
+    Vue.prototype.$showdown = Vue.showdown = showdown;
+  },
+});
 
 const vue = new Vue({
   render: (h) => h(App),
