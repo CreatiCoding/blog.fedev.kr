@@ -1,5 +1,5 @@
 import Auth from "../services/auth";
-import Post from "../services/post";
+import Document from "../services/document";
 import axios from "axios";
 
 class Service {
@@ -18,7 +18,7 @@ class Service {
       this.requestFailureHandler
     );
 
-    this.Post = Post;
+    this.Document = Document;
     this.Auth = Auth;
   }
   async get(url, query) {
@@ -28,7 +28,8 @@ class Service {
     return await this.instance.post(url, body);
   }
   async requestSuccessHandler(config) {
-    const token = localStorage.getItem("Auth/token");
+    // const token = this.Vue.prototype.$cookies.User.get("token");
+    var token = "";
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
