@@ -6,7 +6,7 @@ export default {
   name: "PostEditorPage",
   data() {
     return {
-      contents: { value: "" }
+      contents: { value: "" },
     };
   },
   created() {},
@@ -18,13 +18,13 @@ export default {
       this.$stackedit.openFile({ el });
       this.$stackedit.onClose(() => {
         if (window.history.length <= 1) {
-          this.$router.push("/");
+          this.$router.replace("/document/list");
           return;
         }
         this.$router.go(-1);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

@@ -1,8 +1,16 @@
 <template>
   <div>
     <div>
-      <InputAtom type="text" :value="id" @input="val => id = val"></InputAtom>
-      <InputAtom type="password" :value="password" @input="val => password = val"></InputAtom>
+      <InputAtom
+        type="text"
+        :value="id"
+        @input="(val) => (id = val)"
+      ></InputAtom>
+      <InputAtom
+        type="password"
+        :value="password"
+        @input="(val) => (password = val)"
+      ></InputAtom>
     </div>
     <div>
       <ButtonAtom :click="login">로그인</ButtonAtom>
@@ -14,12 +22,12 @@ export default {
   name: "LoginPage",
   components: {
     InputAtom: () => import("../presentation/atoms/InputAtom"),
-    ButtonAtom: () => import("../presentation/atoms/ButtonAtom")
+    ButtonAtom: () => import("../presentation/atoms/ButtonAtom"),
   },
   data() {
     return {
       id: "",
-      password: ""
+      password: "",
     };
   },
   created() {},
@@ -29,13 +37,15 @@ export default {
       try {
         const { data } = await this.$service.Auth.login({ id, password });
         const { token } = data;
-        this.$storage.Auth.set("token", token);
+        this.$cookie.User.set("token", token);
+        this.$router.replace(this.$router.getNext());
       } catch (e) {
+        console.error(e);
         const { data } = e.response;
         this.$modal.show("alert", { title: "알림", message: data.message });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>
