@@ -9,14 +9,17 @@ export default {
     return {};
   },
   props: {
-    author: { type: String, default: "CreatiCoding" },
+    author: { type: String, default: "CreatiCoding" }
   },
   created() {},
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
 .main-footer-container {
-  // background: orangered;
+  background: #e0e0e0;
+  height: 10rem;
+  line-height: 10rem;
+  padding-top: 2rem;
 }
 </style>

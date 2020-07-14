@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: "MarginAtom",
+  name: "MarginTag",
   props: {
     top: { type: String, default: "auto" },
     right: { type: String, default: "auto" },
@@ -20,8 +20,8 @@ export default {
     left: { type: String, default: "auto" },
 
     width: { type: String, default: "auto" },
-    height: { type: String, default: "auto" },
-  },
+    height: { type: String, default: "auto" }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
