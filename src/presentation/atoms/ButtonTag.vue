@@ -5,9 +5,9 @@
 </template>
 <script>
 export default {
-  name: "ButtonAtom",
+  name: "ButtonTag",
   props: {
-    click: { type: Function, default: () => {} },
+    click: { type: Function, default: () => {} }
   },
   data() {
     return {};
@@ -16,8 +16,8 @@ export default {
   methods: {
     clickHandler(event) {
       this.click(event);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

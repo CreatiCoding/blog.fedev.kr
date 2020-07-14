@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "InputAtom",
+  name: "InputTag",
   components: {},
   data() {
     return {};
