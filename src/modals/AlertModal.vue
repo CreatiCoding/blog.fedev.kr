@@ -3,7 +3,7 @@
     <div class="title">{{state.title}}</div>
     <div class="message">{{state.message}}</div>
     <div v-for="(button, index) in button_list" :key="`AlertModal-button-${index}`">
-      <ButtonAtom :click="button.click" class="button">{{button.message}}</ButtonAtom>
+      <ButtonTag :click="button.click" class="button">{{button.message}}</ButtonTag>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   name: "AlertModal",
   components: {
-    ButtonAtom: () => import("../presentation/atoms/ButtonAtom")
+    ButtonTag: () => import("../presentation/atoms/ButtonTag")
   },
   props: {
     state: Object

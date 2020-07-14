@@ -1,6 +1,6 @@
 <template>
   <div class="document-list-page">
-    <MarginAtom top="50px" />
+    <MarginTag top="50px" />
     <div>
       <h1>게시글</h1>
     </div>
@@ -8,7 +8,7 @@
       v-for="(document, index) in document_list"
       :key="`document_list-${index}-${document.document_id}`"
     >
-      <ButtonAtom
+      <ButtonTag
         @mouseenter.native="
           (event) => (event.target.style.background = 'skyblue')
         "
@@ -20,7 +20,7 @@
         <div>{{ document.document_id }}</div>
         <div>{{ document.title }}</div>
         <div>{{ document.created_at }}</div>
-      </ButtonAtom>
+      </ButtonTag>
     </div>
   </div>
 </template>
@@ -28,8 +28,8 @@
 export default {
   name: "DocumentListPage",
   components: {
-    MarginAtom: () => import("../presentation/atoms/MarginAtom"),
-    ButtonAtom: () => import("../presentation/atoms/ButtonAtom")
+    MarginTag: () => import("../presentation/atoms/MarginTag"),
+    ButtonTag: () => import("../presentation/atoms/ButtonTag")
   },
   data() {
     return {
@@ -49,7 +49,6 @@ export default {
 <style lang="scss" scoped>
 .document-list-page {
   // background: salmon;
-  width: 1024px;
   margin: 0 auto;
 }
 </style>

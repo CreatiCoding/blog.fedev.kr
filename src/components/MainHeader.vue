@@ -1,9 +1,12 @@
 <template>
   <div class="main-header-container o-h">
     <div class="f-l left">
-      <ButtonAtom class="logo">
-        <img v-lazy="'https://img.icons8.com/android/24/000000/menu.png'" />
-      </ButtonAtom>
+      <ButtonTag class="logo">
+        <img
+          style="max-width: 100%; width: auto;"
+          v-lazy="'https://img.icons8.com/android/24/000000/menu.png'"
+        />
+      </ButtonTag>
       <span>{{ title }}</span>
     </div>
     <!-- <div class="f-l center">C</div> -->
@@ -14,16 +17,16 @@
 export default {
   name: "MainHeader",
   components: {
-    ButtonAtom: () => import("./../presentation/atoms/ButtonAtom"),
+    ButtonTag: () => import("./../presentation/atoms/ButtonTag")
   },
   props: {
-    title: { type: String, default: "Creco" },
+    title: { type: String, default: "Creco" }
   },
   data() {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
