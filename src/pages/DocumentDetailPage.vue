@@ -1,11 +1,12 @@
 <template>
   <div class="document-detail-page">
-    <MarginAtom top="50px" />
-    <div>
+    <MarginTag bottom="calc(62px + 1rem)" />
+    <div class="title-container">
       <h1>{{ title }}</h1>
+      <MarginTag bottom="2rem" />
     </div>
     <div>
-      <div v-html="contents" />
+      <div class="contents" v-html="contents" ref="contents" />
     </div>
   </div>
 </template>
@@ -13,7 +14,7 @@
 export default {
   name: "DocumentDetailPage",
   components: {
-    MarginAtom: () => import("../presentation/atoms/MarginAtom")
+    MarginTag: () => import("../presentation/atoms/MarginTag")
   },
   data() {
     const state = {
@@ -49,7 +50,17 @@ export default {
     this.title = document.title;
 
     const converter = new this.$showdown.Converter();
-    this.contents = converter.makeHtml(document.contents);
+    const contents = converter
+      .makeHtml(document.contents)
+      .replace(/<img src=/g, "<img class='load-yet' data-src=");
+    this.contents = contents;
+    await Promise.resolve();
+    await this.$nextTick();
+    this.$refs.contents.querySelectorAll(".load-yet").forEach(async element => {
+      element.src = element.dataset.src;
+      await new Promise(resolve => setTimeout(() => resolve(true), 300));
+      element.className = "load-done";
+    });
   },
   methods: {}
 };
@@ -57,7 +68,40 @@ export default {
 <style lang="scss" scoped>
 .document-detail-page {
   // background: salmon;
-  width: 1024px;
-  margin: 0 auto;
+  .title-container {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    h1 {
+      display: inline;
+      border-bottom: solid 1rem;
+      border-color: #50aafb;
+      line-height: 3.75rem;
+      font-size: 2.25rem;
+    }
+  }
+  .contents {
+    word-break: break-word;
+    ::v-deep > * {
+      margin: 1rem;
+    }
+    ::v-deep > h2 {
+      margin-top: 3rem;
+    }
+    ::v-deep img {
+      &.load-yet {
+        max-height: 0px;
+        transition: max-height 0.15s ease-in;
+        display: block;
+        overflow: hidden;
+      }
+      &.load-done {
+        max-height: 500px;
+        transition: max-height 0.2s ease-out;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 </style>
