@@ -56,8 +56,8 @@ class Router extends VueRouter {
   constructor() {
     super(router);
     this.addEventAuthGuards();
+    // this.addScrollBehavior();
     if (this.currentRoute.meta && this.currentRoute.meta.auth) {
-      console.log("is created");
       this.replace("/login");
     }
   }
@@ -86,5 +86,15 @@ class Router extends VueRouter {
       }
     });
   }
+
+  // addScrollBehavior() {
+  //   this.scrollBehavior = (to, from, savedPosition) => {
+  //     if (savedPosition) {
+  //       return savedPosition;
+  //     } else {
+  //       return { x: 0, y: 0 };
+  //     }
+  //   };
+  // }
 }
 export { VueRouter, Router };
