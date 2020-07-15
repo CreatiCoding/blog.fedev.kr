@@ -1,9 +1,9 @@
 <template>
   <div class="document-detail-page">
-    <MarginTag bottom="calc(62px + 1rem)" />
     <div class="title-container">
+      <PaddingTag top="2rem" />
       <h1>{{ title }}</h1>
-      <MarginTag bottom="2rem" />
+      <PaddingTag top="2rem" />
     </div>
     <div>
       <div class="contents" v-html="contents" ref="contents" />
@@ -14,7 +14,7 @@
 export default {
   name: "DocumentDetailPage",
   components: {
-    MarginTag: () => import("../presentation/atoms/MarginTag")
+    PaddingTag: () => import("../presentation/atoms/PaddingTag")
   },
   data() {
     const state = {
@@ -68,10 +68,8 @@ export default {
 <style lang="scss" scoped>
 .document-detail-page {
   // background: salmon;
+  padding-top: 62px;
   .title-container {
-    margin-left: 20px;
-    margin-right: 20px;
-
     h1 {
       display: inline;
       border-bottom: solid 1rem;
@@ -82,9 +80,6 @@ export default {
   }
   .contents {
     word-break: break-word;
-    ::v-deep > * {
-      margin: 1rem;
-    }
     ::v-deep > h2 {
       margin-top: 3rem;
     }
