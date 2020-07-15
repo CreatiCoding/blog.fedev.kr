@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view class="d-b main-header" name="MainHeader"></router-view>
-    <MarginTag top="62px" />
     <router-view class="d-b main-container"></router-view>
     <MarginTag top="5rem" />
     <router-view class="d-b main-footer" name="MainFooter"></router-view>
@@ -29,6 +28,7 @@ export default {
 <style lang="scss">
 @import "./style/common.scss";
 @import "normalize-css";
+
 .stackedit-container {
   margin-top: 62px;
 }
@@ -47,6 +47,9 @@ img {
   background: white;
 }
 .main-container {
+  padding-top: 62px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   min-height: calc(100vh - 100px);
   max-width: 1024px;
   margin: 0 auto;

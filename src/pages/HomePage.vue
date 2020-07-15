@@ -1,6 +1,5 @@
 <template>
   <div>
-    <MarginTag top="50px" />
     <div class="main-container">
       <ButtonTag :click="() => $router.push('/document/list')">
         <h1
@@ -15,7 +14,6 @@
 export default {
   name: "HomePage",
   components: {
-    MarginTag: () => import("../presentation/atoms/MarginTag"),
     ButtonTag: () => import("../presentation/atoms/ButtonTag")
   },
   data() {

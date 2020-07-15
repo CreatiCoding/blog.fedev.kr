@@ -7,7 +7,7 @@
           v-lazy="'https://img.icons8.com/android/24/000000/menu.png'"
         />
       </ButtonTag>
-      <span>{{ title }}</span>
+      <ButtonTag class="title" :click="goHome">{{ title }}</ButtonTag>
     </div>
     <!-- <div class="f-l center">C</div> -->
     <!-- <div class="f-r right">R</div> -->
@@ -26,7 +26,13 @@ export default {
     return {};
   },
   created() {},
-  methods: {}
+  methods: {
+    goHome() {
+      if (this.$route.fullPath !== "/") {
+        this.$router.push("/");
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -44,7 +50,7 @@ export default {
         margin: calc((62px - 24px) / 2);
       }
     }
-    span {
+    .title {
       color: #50aafb;
       font-size: 2rem;
       display: inline-block;
