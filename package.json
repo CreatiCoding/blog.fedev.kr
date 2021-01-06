@@ -11,7 +11,7 @@
     "deploy": "./key/deploy.sh"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "local-storage": "^2.0.0",
     "normalize-css": "^2.3.1",
